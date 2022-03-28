@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 120,
+              height: 130,
               color: MyTheme.black,
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -62,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
             Consumer<DataProvider>(
               builder: (context, provider, child) {
                 return Container(
-                  margin: const EdgeInsetsDirectional.only(top: 80),
+                  margin: const EdgeInsetsDirectional.only(top: 90),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   decoration: const BoxDecoration(
@@ -76,16 +76,16 @@ class _MainScreenState extends State<MainScreen> {
                         ],
                       ),
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.0),
-                          topRight: Radius.circular(30.0))),
+                          topLeft: Radius.circular(40.0),
+                          topRight: Radius.circular(40.0))),
                   child: RefreshIndicator(
                     onRefresh: () {
                       return provider.getData();
                     },
                     color: MyTheme.black,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: ListView(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: ListView(padding: const EdgeInsets.only(top: 10),
                         children: [
                           Row(
                             children: [
@@ -116,6 +116,7 @@ class _MainScreenState extends State<MainScreen> {
                           provider.categories == null
                               ? const LinearProgressIndicator(
                                   color: MyTheme.black,
+                                  backgroundColor: Colors.transparent,
                                   minHeight: 32.0,
                                 )
                               : SizedBox(
@@ -134,10 +135,11 @@ class _MainScreenState extends State<MainScreen> {
                           provider.days == null
                               ? const LinearProgressIndicator(
                                   color: MyTheme.black,
+                            backgroundColor: Colors.transparent,
                                   minHeight: 32.0,
                                 )
                               : SizedBox(
-                                  height: 32,
+                                  height: 28,
                                   child: ListView.builder(
                                       itemCount: provider.days!.length,
                                       scrollDirection: Axis.horizontal,
@@ -148,7 +150,7 @@ class _MainScreenState extends State<MainScreen> {
                                         );
                                       }),
                                 ),
-                          const SizedBox(height: 20),
+                          // const SizedBox(height: 5),
                           provider.products == null
                               ? SizedBox(
                                   height:
