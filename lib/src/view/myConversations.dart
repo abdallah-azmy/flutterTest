@@ -49,11 +49,6 @@ class _MyConversationsState extends State<MyConversations> {
           ),
         ),
 
-        // StreamProvider<MessageModel>.value(
-        //   initialData: MessageModel.initialData(),
-        //   value: documentStream,
-        //   child:const StreamWidget(),
-        // ),
 
         Container(
           margin: const EdgeInsetsDirectional.only(top: 100),

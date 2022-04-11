@@ -20,7 +20,6 @@ class _OtherUsersState extends State<OtherUsers> {
 
   @override
   Widget build(BuildContext context) {
-    var usersList = context.watch<UsersFutureProvider>().users;
     return Stack(
       children: [
         Container(
@@ -47,7 +46,6 @@ class _OtherUsersState extends State<OtherUsers> {
             ),
           ),
         ),
-
         Container(
           margin: const EdgeInsetsDirectional.only(top: 100),
           width: MediaQuery.of(context).size.width,
@@ -66,35 +64,46 @@ class _OtherUsersState extends State<OtherUsers> {
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0))),
           child: ListView(
-            children: [
-              const SizedBox(
+            children: const [
+              SizedBox(
                 height: 5,
               ),
-              usersList.isEmpty
-                  ? SizedBox(
-                      height: MediaQuery.of(context).size.height * .7,
-                      child: const Center(
-                        child: Text(
-                          "لا يوجد مستخدمين",
-                          style: MyTheme.styleBlack1,
-                        ),
-                      ),
-                    )
-                  : ListView.builder(
-                      itemCount: usersList.length,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemBuilder: (context, i) {
-                        return UserWidget(
-                          provider: usersList[i],
-                          index: i,
-                        );
-                      })
+              UsersStream()
             ],
           ),
         )
       ],
     );
+  }
+}
+
+class UsersStream extends StatelessWidget {
+  const UsersStream({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var usersList = context.watch<UsersFutureProvider>().users;
+
+    return usersList.isEmpty
+        ? SizedBox(
+            height: MediaQuery.of(context).size.height * .7,
+            child: const Center(
+              child: Text(
+                "لا يوجد مستخدمين",
+                style: MyTheme.styleBlack1,
+              ),
+            ),
+          )
+        : ListView.builder(
+            itemCount: usersList.length,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, i) {
+              return UserWidget(
+                provider: usersList[i],
+                index: i,
+              );
+            });
   }
 }
