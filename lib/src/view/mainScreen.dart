@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertest/src/controller/provider/authenticationProvider.dart';
-import 'package:fluttertest/src/view/appBottomNavBar.dart';
+import 'package:fluttertest/src/view/widgets/appBottomNavBar.dart';
 import 'package:fluttertest/src/view/myConversations.dart';
 import 'package:fluttertest/src/view/otherUsers.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,6 @@ class _MainScreenState extends State<MainScreen>
 
   @override
   Widget build(BuildContext context) {
-    print("building >>>>>>>>>>>>>>");
     return Scaffold(
       extendBody: true,
       floatingActionButton:

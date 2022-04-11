@@ -60,14 +60,14 @@ class AuthProvider with ChangeNotifier {
           loading = false;
           notifyListeners();
           showToast(
-              msg: "لقد حدث خطأ في اتمام العملية !", state: ToastStates.ERROR);
+              msg: "لقد حدث خطأ في اتمام العملية !", state: ToastStates.error);
         }
       }
     } on SocketException catch (_) {
       loading = false;
       notifyListeners();
       showToast(
-          msg: "لا يوجد اتصال بشبكة الانترنت !", state: ToastStates.ERROR);
+          msg: "لا يوجد اتصال بشبكة الانترنت !", state: ToastStates.error);
     }
   }
 
@@ -117,14 +117,14 @@ class AuthProvider with ChangeNotifier {
           loading = false;
           notifyListeners();
           showToast(
-              msg: "لقد حدث خطأ في اتمام العملية !", state: ToastStates.ERROR);
+              msg: "لقد حدث خطأ في اتمام العملية !", state: ToastStates.error);
         }
       }
     } on SocketException catch (_) {
       loading = false;
       notifyListeners();
       showToast(
-          msg: "لا يوجد اتصال بشبكة الانترنت !", state: ToastStates.ERROR);
+          msg: "لا يوجد اتصال بشبكة الانترنت !", state: ToastStates.error);
     }
   }
 

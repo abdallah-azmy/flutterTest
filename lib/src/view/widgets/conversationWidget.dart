@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertest/src/controller/helper/myTheme.dart';
 import 'package:fluttertest/src/controller/helper/route.dart';
-import 'package:fluttertest/src/model/messageModel.dart';
+import 'package:fluttertest/src/model/conversationModel.dart';
 import 'package:fluttertest/src/view/chat.dart';
 import 'package:intl/intl.dart' as intl;
 
@@ -10,7 +10,7 @@ class ConversationWidget extends StatelessWidget {
       : super(key: key);
 
   final int? index;
-  final MessageModel? provider;
+  final ConversationModel? provider;
 
   changeDateFormat(date) {
     String formattedDate = intl.DateFormat.yMd().add_jm().format(date);

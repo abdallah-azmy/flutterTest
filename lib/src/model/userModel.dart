@@ -10,7 +10,7 @@ class UserModel {
         email: map['email'],
         name: map['name'],
         uid: map['uid'],
-        date: map['date'],
+        date: map['date'].toDate(),
       );
 
   Map<String, dynamic> toMap(UserModel user) => {

@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertest/src/controller/provider/authenticationProvider.dart';
-import 'package:fluttertest/src/controller/provider/dataProvider.dart';
+import 'package:fluttertest/src/controller/provider/futureProviderForUsers.dart';
+import 'package:fluttertest/src/controller/provider/streamProviderForConversations.dart';
 import 'package:fluttertest/src/model/hiveModel.dart';
 import 'package:fluttertest/src/view/Intro/splashScreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -24,9 +25,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: DataProvider()),
         ChangeNotifierProvider.value(value: AuthProvider()),
-        // FutureProvider(create: (_)=> getUsers(), initialData:0 ),
+        FutureProvider<UsersFutureProvider>(
+          create: (context) => getAllUsers(),
+          initialData: UsersFutureProvider(),
+        ),
+        StreamProvider<ConversationsProvider>(
+          initialData: ConversationsProvider(),
+          create: (context) => getConversations(),
+        ),
       ],
       child: MaterialApp(
         navigatorKey: navigator,
